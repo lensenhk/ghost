@@ -1,6 +1,5 @@
 FROM node:10-alpine
-RUN apk add --no-cache 'su-exec>=0.2'
-RUN apk add --no-cache bash
+RUN apk add --no-cache 'su-exec>=0.2' bash
 ENV NODE_ENV production
 ENV GHOST_CLI_VERSION 1.10.0
 RUN npm config set unsafe-perm true
@@ -9,6 +8,7 @@ ENV GHOST_INSTALL /var/lib/ghost
 ENV GHOST_CONTENT /var/lib/ghost/content
 ENV GHOST_VERSION 2.22.1
 ENV DOMAIN localhost
+
 RUN set -ex; mkdir -p "$GHOST_INSTALL"; chown node:node "$GHOST_INSTALL"; \
 	su-exec node ghost install "$GHOST_VERSION" --db sqlite3 --no-prompt --no-stack --no-setup --dir "$GHOST_INSTALL"; \
 	cd "$GHOST_INSTALL"; \
@@ -30,6 +30,7 @@ RUN set -eux; \
 WORKDIR $GHOST_INSTALL
 VOLUME $GHOST_CONTENT
 COPY docker-entrypoint.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE $PORT
 CMD ["node", "current/index.js"]
