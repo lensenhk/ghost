@@ -1,0 +1,11 @@
+{
+  "name": "Ghost on Heroku (GDrive)",
+  "description": "Ghost on Heroku",
+  "keywords": ["ghost"],
+  "env": {
+
+  },
+  "website": "https://github.com/lensenhk/ghost",
+  "repository": "https://github.com/lensenhk/ghost",
+  "stack": "container"
+}
