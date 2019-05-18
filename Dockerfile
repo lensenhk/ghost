@@ -8,6 +8,7 @@ ENV GHOST_INSTALL /var/lib/ghost
 ENV GHOST_CONTENT /var/lib/ghost/content
 ENV GHOST_VERSION 2.22.1
 ENV DOMAIN localhost
+ENV PORT 2368
 
 RUN set -ex; mkdir -p "$GHOST_INSTALL"; chown node:node "$GHOST_INSTALL"; \
 	su-exec node ghost install "$GHOST_VERSION" --db sqlite3 --no-prompt --no-stack --no-setup --dir "$GHOST_INSTALL"; \
