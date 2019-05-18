@@ -3,7 +3,10 @@
   "description": "Ghost on Heroku",
   "keywords": ["ghost"],
   "env": {
-
+    "DOMAIN": {
+       "description": "domain",
+       "value": "https://kushare.herokuapp.com"
+     }
   },
   "website": "https://github.com/lensenhk/ghost",
   "repository": "https://github.com/lensenhk/ghost",
